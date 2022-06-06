@@ -67,12 +67,6 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
             texCoord.y = mesh->mTextureCoords[0][i].y;
         }
 
-        // Add into the list of verticies
-        // TODO remove these comments if it works
-        // Vertex vertex;
-        // vertex.Position = posVector;
-        // vertex.Normal = normVector;
-        // vertex.TexCoords = texCoord;
         verticies.push_back({ posVector, normVector, texCoord });
     }
 

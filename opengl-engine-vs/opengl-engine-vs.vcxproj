@@ -148,6 +148,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Rendering\ModelTemplates\CubeModel.cpp" />
+    <ClCompile Include="Engine\Scenes\CubeOutlinesScene.cpp" />
+    <ClCompile Include="Engine\Scenes\BaseScene.cpp" />
     <ClCompile Include="Engine\Scenes\CubeScene.cpp" />
     <ClCompile Include="Engine\Camera.cpp" />
     <ClCompile Include="Engine\Application.cpp" />
@@ -163,6 +166,8 @@
     <ClCompile Include="Engine\Rendering\Model.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Rendering\ModelTemplates\CubeModel.h" />
+    <ClInclude Include="Engine\Scenes\CubeOutlinesScene.h" />
     <ClInclude Include="Engine\Scenes\CubeScene.h" />
     <ClInclude Include="Engine\Camera.h" />
     <ClInclude Include="Engine\Application.h" />

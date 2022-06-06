@@ -17,7 +17,7 @@ protected:
 public:
     BaseScene() { };
     // Call on creation
-    virtual void init() { };
+    virtual void init();
     /**
      * @brief Call on every frame for update, make sure to call the super class
      * version to handle inputs.
@@ -29,5 +29,5 @@ public:
 
 protected:
     // Get's called with the update method to handle inputs
-    virtual void handleInput() { };
+    virtual void handleInput();
 };

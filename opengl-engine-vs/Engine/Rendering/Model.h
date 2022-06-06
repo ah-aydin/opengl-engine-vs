@@ -10,13 +10,22 @@
 
 class Model
 {
+protected:
+    Model() { };
+
 public:
+    /*
+    * @brief Loads a model from a supplied model file
+    * 
+    * @param path - path to the location of the model files
+    * @param obj_file_name - name of the main object file
+    */
     Model(std::string path, std::string obj_file_name) : path(path)
     {
         loadModel(path + obj_file_name);
     }
     void Render(Shader& shader);
-private:
+protected:
     std::string path;
 
     std::vector<Mesh> meshes;

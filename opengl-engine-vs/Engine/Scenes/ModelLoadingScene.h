@@ -13,9 +13,6 @@ public:
     void update(float dt) override;
     ~ModelLoadingScene();
 
-protected:
-    void handleInput() override;
-
 private:
     Shader* shader;
     Model* model;

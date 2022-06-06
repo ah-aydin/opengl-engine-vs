@@ -9,6 +9,7 @@
 
 #include "Scenes/CubeScene.h"
 #include "Scenes/ModelLoadingScene.h"
+#include "Scenes/CubeOutlinesScene.h"
 
 Application::~Application()
 {
@@ -58,6 +59,7 @@ bool Application::sdlInit()
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
 
     SDL_ShowCursor(SDL_DISABLE);        // Hide cursor
     SDL_SetRelativeMouseMode(SDL_TRUE); // FPS style mouse movement
@@ -76,13 +78,11 @@ bool Application::glInit()
     }
 
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_STENCIL_TEST);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
     glViewport(0, 0, window.getWidth(), window.getHeight());
-
-    /*
-        * Texture
-        */
-        // Settings
+    // Texture Settings
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
     // If chose clamp to border as an option, need to specify a color
@@ -118,8 +118,9 @@ void Application::inputInit()
 
 void Application::mainLoop()
 {
-    //CubeScene* level = new CubeScene();
-    ModelLoadingScene *level = new ModelLoadingScene();
+    //CubeScene *level = new CubeScene();
+    //ModelLoadingScene *level = new ModelLoadingScene();
+    CubeOutlinesScene *level = new CubeOutlinesScene();
     level->init();
 
     while (running)
@@ -127,7 +128,7 @@ void Application::mainLoop()
         PollEvents();
         if (!running)
             break;
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
         if (Input::getAction("quit"))
             break;
